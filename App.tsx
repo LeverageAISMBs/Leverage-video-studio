@@ -192,6 +192,17 @@ const App: React.FC = () => {
     }
   }, [lastConfig, lastVideoBlob, lastVideoObject]);
 
+  const handleDownload = useCallback(() => {
+    if (videoUrl) {
+      const link = document.createElement('a');
+      link.href = videoUrl;
+      link.setAttribute('download', 'leverage-studio-video.mp4');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }, [videoUrl]);
+
   const renderError = (message: string) => (
     <div className="text-center bg-red-900/20 border border-red-500 p-8 rounded-lg">
       <h2 className="text-2xl font-bold text-red-400 mb-4">Error</h2>
@@ -211,7 +222,7 @@ const App: React.FC = () => {
       )}
       <header className="py-6 flex justify-center items-center px-8 relative z-10">
         <h1 className="text-5xl font-semibold tracking-wide text-center bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-          Veo Studio
+          Leverage Studio
         </h1>
       </header>
       <main className="w-full max-w-4xl mx-auto flex-grow flex flex-col p-4">
@@ -242,6 +253,7 @@ const App: React.FC = () => {
                 onNewVideo={handleNewVideo}
                 onExtend={handleExtend}
                 canExtend={lastConfig?.resolution === Resolution.P720}
+                onDownload={handleDownload}
               />
             )}
             {appState === AppState.SUCCESS &&

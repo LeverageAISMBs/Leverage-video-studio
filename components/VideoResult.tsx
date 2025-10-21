@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 import React from 'react';
-import {ArrowPathIcon, PlusIcon, SparklesIcon} from './icons';
+import {ArrowPathIcon, DownloadIcon, PlusIcon, SparklesIcon} from './icons';
 
 interface VideoResultProps {
   videoUrl: string;
@@ -11,6 +11,7 @@ interface VideoResultProps {
   onNewVideo: () => void;
   onExtend: () => void;
   canExtend: boolean;
+  onDownload: () => void;
 }
 
 const VideoResult: React.FC<VideoResultProps> = ({
@@ -19,6 +20,7 @@ const VideoResult: React.FC<VideoResultProps> = ({
   onNewVideo,
   onExtend,
   canExtend,
+  onDownload,
 }) => {
   return (
     <div className="w-full flex flex-col items-center gap-8 p-8 bg-gray-800/50 rounded-lg border border-gray-700 shadow-2xl">
@@ -41,6 +43,12 @@ const VideoResult: React.FC<VideoResultProps> = ({
           className="flex items-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition-colors">
           <ArrowPathIcon className="w-5 h-5" />
           Retry
+        </button>
+        <button
+          onClick={onDownload}
+          className="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg transition-colors">
+          <DownloadIcon className="w-5 h-5" />
+          Download
         </button>
         {canExtend && (
           <button

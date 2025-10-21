@@ -5,6 +5,7 @@
 import React from 'react';
 import {
   ArrowDown,
+  ArrowDownToLine,
   ArrowRight,
   Baseline,
   ChevronDown,
@@ -78,6 +79,10 @@ export const TvIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 export const FilmIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <Film {...defaultProps} {...props} />
+);
+
+export const DownloadIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <ArrowDownToLine {...defaultProps} {...props} />
 );
 
 // This icon had a different stroke width in the original file, so we preserve it.
